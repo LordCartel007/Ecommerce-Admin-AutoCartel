@@ -28,7 +28,7 @@ export const authOptions = {
   },
 };
 export default NextAuth(authOptions);
-//Hacking prevention
+//Hacking prevention section
 // security measures
 export async function isAdminRequest(req, res) {
   const session = await getServerSession(req, res, authOptions);
