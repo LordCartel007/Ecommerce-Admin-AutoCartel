@@ -34,12 +34,16 @@ export default NextAuth(authOptions);
 export async function isAdminRequest(req, res) {
   try {
     const session = await getServerSession(req, res, authOptions);
+    if (!session) {
+      res.status(401).end("Unauthorized");
+      throw new Error("No session found");
+    }
     if (!adminEmails.includes(session?.user?.email)) {
       res.status(401).end("Unauthorized");
-      throw new Error("not an admin");
+      throw new Error("Not an admin");
     }
   } catch (error) {
+    console.error("Error in isAdminRequest:", error);
     res.status(500).end("Internal Server Error");
-    console.error(error);
   }
 }
