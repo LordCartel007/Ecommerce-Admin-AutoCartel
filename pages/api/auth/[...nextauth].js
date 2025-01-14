@@ -26,14 +26,20 @@ export const authOptions = {
       }
     },
   },
+  debug: true, // Enable debug mode to get more detailed error messages
 };
 export default NextAuth(authOptions);
 //Hacking prevention section
 // security measures
 export async function isAdminRequest(req, res) {
-  const session = await getServerSession(req, res, authOptions);
-  if (!adminEmails.includes(session?.user?.email)) {
-    res.status(401).end("Unauthorized");
-    throw new Error("not an admin");
+  try {
+    const session = await getServerSession(req, res, authOptions);
+    if (!adminEmails.includes(session?.user?.email)) {
+      res.status(401).end("Unauthorized");
+      throw new Error("not an admin");
+    }
+  } catch (error) {
+    res.status(500).end("Internal Server Error");
+    console.error(error);
   }
 }
