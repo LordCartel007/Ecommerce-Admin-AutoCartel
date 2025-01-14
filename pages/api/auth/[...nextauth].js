@@ -29,7 +29,7 @@ export const authOptions = {
   debug: true, // Enable debug mode to get more detailed error messages
 };
 export default NextAuth(authOptions);
-//Hacking prevention section
+//Hacking prevention
 // security measures
 export async function isAdminRequest(req, res) {
   try {
