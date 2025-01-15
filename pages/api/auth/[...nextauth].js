@@ -16,6 +16,7 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
+
   adapter: MongoDBAdapter(client),
   callbacks: {
     session: ({ session }) => {
@@ -28,6 +29,7 @@ export const authOptions = {
   },
   debug: true, // Enable debug mode to get more detailed error messages
 };
+console.log(process.env.GOOGLE_ID);
 export default NextAuth(authOptions);
 //Hacking prevention
 // security measures
