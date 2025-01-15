@@ -18,10 +18,6 @@ export default function Layout({ children }) {
           >
             Login With Google
           </button>
-          <div>
-            <h1>Environment Variables Debug</h1>
-            <p>Google Client ID: {process.env.GOOGLE_ID}</p>
-          </div>
         </div>
       </div>
     );

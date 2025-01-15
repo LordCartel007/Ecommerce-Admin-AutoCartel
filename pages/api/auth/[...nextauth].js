@@ -16,7 +16,6 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-
   adapter: MongoDBAdapter(client),
   callbacks: {
     session: ({ session }) => {
@@ -29,23 +28,22 @@ export const authOptions = {
   },
   debug: true, // Enable debug mode to get more detailed error messages
 };
-console.log(process.env.GOOGLE_ID);
 export default NextAuth(authOptions);
 //Hacking prevention
 // security measures
 export async function isAdminRequest(req, res) {
-  try {
-    const session = await getServerSession(req, res, authOptions);
-    if (!session) {
-      res.status(401).end("Unauthorized");
-      throw new Error("No session found");
-    }
-    if (!adminEmails.includes(session?.user?.email)) {
-      res.status(401).end("Unauthorized");
-      throw new Error("Not an admin");
-    }
-  } catch (error) {
-    console.error("Error in isAdminRequest:", error);
-    res.status(500).end("Internal Server Error");
-  }
+  // try {
+  const session = await getServerSession(req, res, authOptions);
+  //   if (!session) {
+  //     res.status(401).end("Unauthorized");
+  //     throw new Error("No session found");
+  //   }
+  //   if (!adminEmails.includes(session?.user?.email)) {
+  //     res.status(401).end("Unauthorized");
+  //     throw new Error("Not an admin");
+  //   }
+  // } catch (error) {
+  //   console.error("Error in isAdminRequest:", error);
+  //   res.status(500).end("Internal Server Error");
+  // }
 }
