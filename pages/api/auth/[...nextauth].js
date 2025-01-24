@@ -9,7 +9,7 @@ const adminEmails = ["cartellord77@gmail.com"];
 
 export const authOptions = {
   providers: [
-    // OAuth authentication providers...
+    // OAuth authentication providers....ya
 
     GoogleProvider({
       clientId: process.env.NEXT_PUBLIC_GOOGLE_ID,
