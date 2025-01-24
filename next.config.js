@@ -1,7 +1,4 @@
 module.exports = {
-  experimental: {
-    middleware: true, // Enable experimental middleware feature if needed
-  },
   // Optional: specify path matching rules
   async rewrites() {
     return [
