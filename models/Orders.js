@@ -2,19 +2,21 @@ import { Schema, models, model } from "mongoose";
 
 const OrderSchema = new Schema(
   {
-    line_items: Object,
+    product_Items: { type: Array, default: [] },
     name: String,
     email: String,
     city: String,
+    phoneNumber: Number,
     postalCode: String,
     streetAddress: String,
     country: String,
     paid: Boolean,
   },
-
   {
     timestamps: true,
   }
 );
 
-export const Order = models?.Order || model("Order", OrderSchema);
+const Order = models?.Order || model("Order", OrderSchema);
+
+export default Order;

@@ -9,6 +9,7 @@ export default function OrdersPage() {
       setOrders(response.data);
     });
   }, []);
+
   return (
     <Layout>
       <h1>Orders</h1>
@@ -30,21 +31,19 @@ export default function OrdersPage() {
                 <td className={order.paid ? "text-green-600" : "text-red-600"}>
                   {order.paid ? "Yes" : "No"}
                 </td>
-                <td>
+                <td class="text-end">
                   {order.name} {order.email}
                   <br />
                   {order.city} {order.postalCode}
                   {order.country}
                   <br />
                   {order.streetAddress}
+                  <br />
+                  {order.phoneNumber}
                 </td>
-                <td>
-                  {order.line_items.map((l) => (
-                    <>
-                      {l.price_data?.product_data.name} x {l.quantity} <br />
-                      <br />
-                    </>
-                  ))}
+
+                <td className="center-text text-wrap ">
+                  {order.product_Items}
                 </td>
               </tr>
             ))}

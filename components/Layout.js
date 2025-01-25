@@ -6,22 +6,22 @@ import Logo from "../components/Logo";
 
 export default function Layout({ children }) {
   const [showNav, setShowNav] = useState(false);
-  const { data: session } = useSession();
-  if (!session) {
-    return (
-      <div className="bg-blue-900 w-screen h-screen flex items-center">
-        <div className="text-center w-full">
-          {" "}
-          <button
-            onClick={() => signIn("google")}
-            className="bg-gray-300 p-2 px-4 rounded-lg"
-          >
-            Login With Google
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // const { data: session } = useSession();
+  // if (!session) {
+  //   return (
+  //     <div className="bg-blue-900 w-screen h-screen flex items-center">
+  //       <div className="text-center w-full">
+  //         {" "}
+  //         <button
+  //           onClick={() => signIn("google")}
+  //           className="bg-gray-300 p-2 px-4 rounded-lg"
+  //         >
+  //           Login With Google
+  //         </button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
   return (
     <div className="bg-bgGary min-h-screen">
       <div className=" md:hidden flex items-center p-4 ">

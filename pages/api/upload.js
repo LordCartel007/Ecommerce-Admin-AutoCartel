@@ -10,7 +10,7 @@ const bucketName = "cartel-next-ecommerce";
 
 export default async function handler(req, res) {
   await mongooseConnect();
-  await isAdminRequest(req, res);
+  // await isAdminRequest(req, res);
   const form = new multiparty.Form();
 
   const { fields, files } = await new Promise((resolve, reject) => {
