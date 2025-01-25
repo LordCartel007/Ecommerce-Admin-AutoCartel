@@ -19,6 +19,7 @@ export default function OrdersPage() {
             <th>Date</th>
             <th>Paid</th>
             <th>Recipient</th>
+            <br />
             <th>Products</th>
           </tr>
         </thead>
@@ -31,20 +32,24 @@ export default function OrdersPage() {
                 <td className={order.paid ? "text-green-600" : "text-red-600"}>
                   {order.paid ? "Yes" : "No"}
                 </td>
-                <td class="text-end">
-                  {order.name} {order.email}
-                  <br />
-                  {order.city} {order.postalCode}
-                  {order.country}
-                  <br />
-                  {order.streetAddress}
-                  <br />
-                  {order.phoneNumber}
-                </td>
 
-                <td className="center-text text-wrap ">
-                  {order.product_Items}
+                <td class=" text-start ">
+                  Name: {order.name}
+                  <br />
+                  Email: {order.email}
+                  <br />
+                  City : {order.city} {order.postalCode}
+                  <br />
+                  Country: {order.country}
+                  <br />
+                  Street: {order.streetAddress}
+                  <br />
+                  No : {order.phoneNumber}
                 </td>
+                <br />
+                <br />
+
+                <td className="text-center">{order.product_Items}</td>
               </tr>
             ))}
         </tbody>
