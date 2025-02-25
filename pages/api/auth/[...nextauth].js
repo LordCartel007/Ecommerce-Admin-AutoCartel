@@ -1,34 +1,34 @@
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import NextAuth from "next-auth";
-import client from "../../../lib/mongodb.js";
-import { getServerSession } from "next-auth";
+// import { MongoDBAdapter } from "@auth/mongodb-adapter";
+// import NextAuth from "next-auth";
+// import client from "../../../lib/mongodb.js";
+// import { getServerSession } from "next-auth";
 
-import GoogleProvider from "next-auth/providers/google";
+// import GoogleProvider from "next-auth/providers/google";
 
-const adminEmails = ["cartellord77@gmail.com"];
+// const adminEmails = ["cartellord77@gmail.com"];
 
-export const authOptions = {
-  providers: [
-    // OAuth authentication providers....ya
+// export const authOptions = {
+//   providers: [
+//     // OAuth authentication providers....ya
 
-    GoogleProvider({
-      clientId: process.env.NEXT_PUBLIC_GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
-  ],
-  adapter: MongoDBAdapter(client),
-  callbacks: {
-    session: ({ session }) => {
-      if (adminEmails.includes(session?.user?.email)) {
-        return session;
-      } else {
-        return false;
-      }
-    },
-  },
-  debug: true, // Enable debug mode to get more detailed error messages
-};
-export default NextAuth(authOptions);
+//     GoogleProvider({
+//       clientId: process.env.NEXT_PUBLIC_GOOGLE_ID,
+//       clientSecret: process.env.GOOGLE_SECRET,
+//     }),
+//   ],
+//   adapter: MongoDBAdapter(client),
+//   callbacks: {
+//     session: ({ session }) => {
+//       if (adminEmails.includes(session?.user?.email)) {
+//         return session;
+//       } else {
+//         return false;
+//       }
+//     },
+//   },
+//   debug: true, // Enable debug mode to get more detailed error messages
+// };
+// export default NextAuth(authOptions);
 //Hacking prevention
 // security measures
 // export async function isAdminRequest(req, res) {

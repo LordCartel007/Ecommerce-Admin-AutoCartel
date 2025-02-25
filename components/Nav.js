@@ -1,7 +1,12 @@
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Logo from "../components/Logo";
+
+// Google sign-in
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 // nav component
 export default function Nav({ show }) {
   const inactiveLink = "flex gap-1 p-1";
@@ -14,6 +19,24 @@ export default function Nav({ show }) {
     await router.push("/");
     await signOut("/");
   }
+
+  const [showNav, setShowNav] = useState(false);
+  const [admin, setAdmin] = useState(null);
+
+  // Check if admin is already logged in
+  useEffect(() => {
+    const storedAdmin = localStorage.getItem("admin");
+    if (storedAdmin) {
+      setAdmin(JSON.parse(storedAdmin));
+    }
+  }, []);
+
+  // Handle Logout
+  const handleLogout = () => {
+    localStorage.removeItem("admin");
+    setAdmin(null);
+    window.location.reload();
+  };
   return (
     <aside
       className={`${
@@ -103,7 +126,7 @@ export default function Nav({ show }) {
           </svg>
           Orders
         </Link>
-        <Link
+        {/* <Link
           href={"/settings"}
           className={pathname.includes("/settings") ? activeLink : inactiveLink}
         >
@@ -127,8 +150,8 @@ export default function Nav({ show }) {
             />
           </svg>
           Settings
-        </Link>
-        <button onClick={() => logout()} className={inactiveLink}>
+        </Link> */}
+        <button onClick={() => handleLogout()} className={inactiveLink}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

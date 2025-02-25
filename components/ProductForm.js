@@ -11,11 +11,13 @@ export default function ProductForm({
   description: existingDescription,
   price: existingPrice,
   images: existingImages,
+  videos: existingVideos,
   category: assignedCategory,
   properties: assignedProperties,
 }) {
   const [title, setTitle] = useState(existingTitle || "");
   const [images, setImages] = useState(existingImages || []);
+  const [videos, setVideos] = useState(existingVideos || []);
   const [description, setDescription] = useState(existingDescription || "");
   const [category, setCategory] = useState(assignedCategory || "");
   const [productProperties, setProductProperties] = useState(
@@ -40,9 +42,11 @@ export default function ProductForm({
       description,
       price,
       images,
+      videos,
       category,
       properties: productProperties,
     };
+    console.log("Sending data:", data);
     if (_id) {
       // update
       await axios.put("/api/products", { ...data, _id });
@@ -156,7 +160,7 @@ export default function ProductForm({
             images.map((link) => (
               <div
                 key={link}
-                className=" h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200"
+                className=" h-40 bg-white p-4 shadow-sm rounded-sm border border-gray-200"
               >
                 <img src={link} alt="" className="rounded-lg" />
               </div>
@@ -193,6 +197,12 @@ export default function ProductForm({
           <input type="file" onChange={uploadImages} className="hidden" />
         </label>
       </div>
+      <label>Videos</label>
+      <textarea
+        placeholder="Videos"
+        value={videos}
+        onChange={(ev) => setVideos(ev.target.value)}
+      />
       <label>Description</label>
       <textarea
         placeholder="description"
