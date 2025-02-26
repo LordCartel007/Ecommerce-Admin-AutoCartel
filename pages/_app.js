@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-// google sign in
+// google sign in with react auth
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
