@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 
+// export function
 export default function Home() {
   const [admin, setAdmin] = useState(null);
 
