@@ -4,13 +4,12 @@ import mime from "mime-types";
 // to read file
 import fs from "fs";
 import { mongooseConnect } from "../../lib/mongoose";
-import { isAdminRequest } from "./auth/[...nextauth]";
 
 const bucketName = "cartel-next-ecommerce";
 
 export default async function handler(req, res) {
   await mongooseConnect();
-  // await isAdminRequest(req, res);
+
   const form = new multiparty.Form();
 
   const { fields, files } = await new Promise((resolve, reject) => {
