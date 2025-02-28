@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { GoogleUser } from "../../models/google"; // Adjust the path as needed
 
 // Allowed admin email
-const ADMIN_EMAIL = "";
+const ADMIN_EMAIL = "etosin70@gmail.com";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
